@@ -8,6 +8,8 @@ fn main() {
         let a = 0;
 
         let bacon_c = 634 + 142
+
+        a + (bacon_c + 50)
         "#.to_string()
     );
 
