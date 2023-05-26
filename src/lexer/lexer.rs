@@ -26,7 +26,7 @@ pub struct Lexer {
 }
 
 impl Lexer {
-    fn new(program: String) -> Lexer {
+    pub fn new(program: String) -> Lexer {
         let mut lexer = Lexer {
             input: program.into_bytes(),
             position: 0,
@@ -41,34 +41,34 @@ impl Lexer {
 
 
     fn skip_whitespace(&mut self) {
-        while self.ch == b' '{
+        while self.ch.is_ascii_whitespace(){
             self.read_char();
         }
     }
 
 
     fn read_ident(&mut self) -> String {
-        let initial_pos = 0;
+        let initial_pos = self.position;
 
         while self.ch.is_ascii_alphabetic() || self.ch == b'_'{
             self.read_char();
         }
 
-        String::from_utf8_lossy(&self.input[initial_pos..self.read_position]).to_string()
+        String::from_utf8_lossy(&self.input[initial_pos..self.position]).to_string()
     }
     
     fn read_int(&mut self) -> String {
-        let initial_pos = 0;
+        let initial_pos = self.position;
 
         while self.ch.is_ascii_digit(){
             self.read_char();
         }
 
-        String::from_utf8_lossy(&self.input[initial_pos..self.read_position]).to_string()
+        String::from_utf8_lossy(&self.input[initial_pos..self.position]).to_string()
     }
 
 
-    fn next_token(&mut self) -> Result<Token> {
+    pub fn next_token(&mut self) -> Result<Token> {
 
         self.skip_whitespace();
         
