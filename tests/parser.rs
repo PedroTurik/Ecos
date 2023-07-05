@@ -40,7 +40,7 @@ fn test_let_statements() {
     .to_owned();
 
     let l = Lexer::new(input);
-    let mut p = Parser::new(l);
+    let p = Parser::new(l);
 
     let program = p.parse_progam();
 

@@ -29,7 +29,7 @@ impl Parser {
         return p;
     }
 
-    pub fn parse_progam(&mut self) -> Program {
+    pub fn parse_progam(mut self) -> Program {
         let mut program = Program { statements: vec![] };
 
         while self.cur_token != Token::Eof {

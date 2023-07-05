@@ -69,21 +69,23 @@ impl Lexer {
     fn read_ident(&mut self) -> String {
         let initial_pos = self.position;
 
-        while self.ch.is_ascii_alphabetic() || self.ch == b'_' {
+        while self.input[self.read_position].is_ascii_alphabetic()
+            || self.input[self.read_position] == b'_'
+        {
             self.read_char();
         }
 
-        String::from_utf8_lossy(&self.input[initial_pos..self.position]).to_string()
+        String::from_utf8_lossy(&self.input[initial_pos..=self.position]).to_string()
     }
 
     fn read_int(&mut self) -> String {
         let initial_pos = self.position;
 
-        while self.ch.is_ascii_digit() {
+        while self.input[self.read_position].is_ascii_digit() {
             self.read_char();
         }
 
-        String::from_utf8_lossy(&self.input[initial_pos..self.position]).to_string()
+        String::from_utf8_lossy(&self.input[initial_pos..=self.position]).to_string()
     }
 
     pub fn next_token(&mut self) -> Result<Token> {

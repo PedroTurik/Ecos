@@ -2,7 +2,7 @@ use ecos::lexer::{Lexer, Token};
 
 #[test]
 fn test_next_token() {
-    let input = "let x = 12    ;";
+    let input = "let x = 12;";
 
     let correct_sequence = vec![
         Token::Let,

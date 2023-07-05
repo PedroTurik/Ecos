@@ -5,17 +5,21 @@ use lexer::Lexer;
 use parser::Parser;
 
 fn main() {
-    let lexer: Lexer = Lexer::new(
+    let mut lexer: Lexer = Lexer::new(
         r#"
-        let a = 0 ;
-        let bacon_c = 634 + 142 ;
-        let adaw =  (bacon_c + 50) ;
+        let a = ijfa;
+        let bacon_c = fefaf ;
+        let adaw =  aefaf ;
         
         "#
         .to_string(),
     );
 
-    let mut parser = Parser::new(lexer);
+    for _ in 0..40 {
+        dbg!(lexer.next_token().unwrap());
+    }
+
+    let parser = Parser::new(lexer);
     let program = parser.parse_progam();
-    dbg!(program.statements);
+    dbg!(program);
 }
