@@ -34,7 +34,7 @@ impl Token {
             Token::Function => ",",
             Token::Let => "let",
             Token::Eof => "EOF",
-            Token::Illegal => "Illegal",
+            Token::Illegal => unreachable!(),
         }
     }
 }

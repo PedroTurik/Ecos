@@ -2,7 +2,6 @@ use std::mem;
 
 use crate::lexer::{Lexer, Token};
 use crate::parser::{Expression, Identifier, LetStatement, Program, Statement};
-use anyhow::Result;
 
 pub struct Parser {
     pub lexer: Lexer,

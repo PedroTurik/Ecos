@@ -4,12 +4,12 @@ pub trait Node {
     fn token_literal(&self) -> String;
 }
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub enum Statement {
     LetStatement(LetStatement),
     IfStatement,
 }
-
 
 impl Node for Statement {
     fn token_literal(&self) -> String {
@@ -20,6 +20,7 @@ impl Node for Statement {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub enum Expression {
     Identifier(Identifier),

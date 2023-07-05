@@ -1,5 +1,5 @@
-use ecos::lexer::{Lexer, Token};
-use ecos::parser::{LetStatement, Node, Parser, Program, Statement};
+use ecos::lexer::Lexer;
+use ecos::parser::{Node, Parser, Statement};
 
 fn test_single_let_statement(stmt: &Statement, name: &str) {
     assert_eq!(
@@ -34,7 +34,7 @@ fn test_single_let_statement(stmt: &Statement, name: &str) {
 fn test_let_statements() {
     let input = r#"
             let x = 5 ;
-            let y = 1 0;
+            let y = 10 ;
             let foobar = 838383 ;
             "#
     .to_owned();
@@ -43,7 +43,7 @@ fn test_let_statements() {
     let mut p = Parser::new(l);
 
     let program = p.parse_progam();
-    
+
     assert_eq!(
         program.statements.len(),
         3,
